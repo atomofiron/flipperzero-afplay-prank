@@ -1,6 +1,6 @@
 # afplay prank
 
-paste this demo (30% volume) script into the your terminal and press Enter
+paste this demo (30% sound volume) script into the your terminal and press Enter
 
 ```
 curl -L https://gist.github.com/assets/14147217/f7094f73-9ba8-493c-abca-ac9a436fd85d -o ~/.config/track.mp4
@@ -14,3 +14,5 @@ and run this to stop it
 ```
 rm ~/.prank
 ```
+
+or reboot your system because neither closing the terminal nor killing the `afplay` process will help you 😈
